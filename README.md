@@ -1,2 +1,5 @@
 # templates
-latex templates
+latex templates for Resume, and Presentations, etc.
+
+
+
