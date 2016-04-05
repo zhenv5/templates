@@ -1,0 +1,185 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Template: Beamer arrows
+%
+% Source: http://www.texample.net/
+% Feel free to distribute this template, but please keep the
+% referal to TeXample.net.
+% Date: Nov 2006
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{beamer} %
+\usetheme{CambridgeUS}
+\usepackage[latin1]{inputenc}
+\usefonttheme{professionalfonts}
+\usepackage{times}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usetikzlibrary{arrows,shapes}
+
+
+
+\title[Your Short Title]{Your Presentation}
+\author{You}
+\institute{The Ohio State University}
+\date{\today}
+\titlegraphic{\hfill\includegraphics[height=1.5cm]{logo}}
+
+	
+
+
+
+\begin{document}
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{comment}
+:Title: Beamer arrows
+:Tags: Remember picture, Beamer, Physics & chemistry, Overlays
+:Use page: 3
+
+With PGF/TikZ version 1.09 and later, it is possible to draw paths between nodes across
+different pictures. This is a useful feature for presentations with the
+Beamer package. In this example I've combined the new PGF/TikZ's overlay feature
+with Beamer overlays. Download the PDF version to see the result.
+
+**Note.** This only works with PDFTeX, and you have to run PDFTeX twice.
+
+| Author: Kjell Magne Fauske
+
+\end{comment}
+
+
+% For every picture that defines or uses external nodes, you'll have to
+% apply the 'remember picture' style. To avoid some typing, we'll apply
+% the style to all pictures.
+\tikzstyle{every picture}+=[remember picture]
+
+% By default all math in TikZ nodes are set in inline mode. Change this to
+% displaystyle so that we don't get small fractions.
+\everymath{\displaystyle}
+
+
+\section{Introduction}
+
+\begin{frame}{Introduction}
+	
+	\begin{itemize}
+		\item Your introduction goes here!
+		\item Use \texttt{itemize} to organize your main points.
+	\end{itemize}
+	
+	\vskip 1cm
+	
+	\begin{block}{Examples}
+		Some examples of commonly used commands and features are included, to help you get started.
+	\end{block}
+	
+\end{frame}
+
+\section{Rigid Body Dynamics}
+\begin{frame}
+\frametitle{Rigid body dynamics}
+
+\tikzstyle{na} = [baseline=-.5ex]
+
+\begin{itemize}[<+-| alert@+>]
+    \item Coriolis acceleration
+        \tikz[na] \node[coordinate] (n1) {};
+\end{itemize}
+
+% Below we mix an ordinary equation with TikZ nodes. Note that we have to
+% adjust the baseline of the nodes to get proper alignment with the rest of
+% the equation.
+\begin{equation*}
+\vec{a}_p = \vec{a}_o+\frac{{}^bd^2}{dt^2}\vec{r} +
+        \tikz[baseline]{
+            \node[fill=blue!20,anchor=base] (t1)
+            {$ 2\vec{\omega}_{ib}\times\frac{{}^bd}{dt}\vec{r}$};
+        } +
+        \tikz[baseline]{
+            \node[fill=red!20, ellipse,anchor=base] (t2)
+            {$\vec{\alpha}_{ib}\times\vec{r}$};
+        } +
+        \tikz[baseline]{
+            \node[fill=green!20,anchor=base] (t3)
+            {$\vec{\omega}_{ib}\times(\vec{\omega}_{ib}\times\vec{r})$};
+        }
+\end{equation*}
+
+\begin{itemize}[<+-| alert@+>]
+    \item Transversal acceleration
+        \tikz[na]\node [coordinate] (n2) {};
+    \item Centripetal acceleration
+        \tikz[na]\node [coordinate] (n3) {};
+\end{itemize}
+
+% Now it's time to draw some edges between the global nodes. Note that we
+% have to apply the 'overlay' style.
+\begin{tikzpicture}[overlay]
+        \path[->]<1-> (n1) edge [bend left] (t1);
+        \path[->]<2-> (n2) edge [bend right] (t2);
+        \path[->]<3-> (n3) edge [out=0, in=-90] (t3);
+\end{tikzpicture}
+\end{frame}
+
+\section{Some \LaTeX{} Examples}
+
+\subsection{Tables and Figures}
+
+\begin{frame}{Tables and Figures}
+	
+	\begin{itemize}
+		\item Use \texttt{tabular} for basic tables --- see Table~\ref{tab:widgets}, for example.
+		\item You can upload a figure (JPEG, PNG or PDF) using the files menu. 
+		\item To include it in your document, use the \texttt{includegraphics} command (see the comment below in the source code).
+	\end{itemize}
+	
+	% Commands to include a figure:
+	%\begin{figure}
+	%\includegraphics[width=\textwidth]{your-figure's-file-name}
+	%\caption{\label{fig:your-figure}Caption goes here.}
+	%\end{figure}
+	
+	\begin{table}
+		\centering
+		\begin{tabular}{l|r}
+			Item & Quantity \\\hline
+			Widgets & 42 \\
+			Gadgets & 13
+		\end{tabular}
+		\caption{\label{tab:widgets}An example table.}
+	\end{table}
+	
+\end{frame}
+
+\subsection{Mathematics}
+
+\begin{frame}{Readable Mathematics}
+	
+	Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically distributed random variables with $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] = \sigma^2 < \infty$, and let
+	$$S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
+	= \frac{1}{n}\sum_{i}^{n} X_i$$
+	denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge in distribution to a normal $\mathcal{N}(0, \sigma^2)$.
+	
+\end{frame}
+
+\end{document}
