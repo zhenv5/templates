@@ -6,6 +6,10 @@ Templates are from [overleaf](https://www.overleaf.com/gallery/tagged/presentati
 
 Presentation template can be viewed in the folder of [presentation-templates](https://github.com/zhenv5/templates/tree/master/presentation-templates)
 
+## Homework Template
+
+Homework template can be viewed in folder [homework-template](https://github.com/zhenv5/templates/tree/master/homework-template)
+
 
 
 
