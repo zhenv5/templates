@@ -27,6 +27,11 @@ L.~Lamport.
 \newblock {\em LaTeX User's Guide and Document Reference Manual}.
 \newblock Addison-Wesley Publishing Company, Reading, Massachusetts, 1986.
 
+\bibitem{Parsons:2004:SubspaceClustering}
+L.~Parsons, E.~Haque, and H.~Liu.
+\newblock Subspace clustering for high dimensional data: A review.
+\newblock {\em SIGKDD Explor. Newsl.}, 6(1):90--105, June 2004.
+
 \bibitem{salas:calculus}
 S.~Salas and E.~Hille.
 \newblock {\em Calculus: One and Several Variable}.
